@@ -6,8 +6,8 @@
 // @author       You
 // @match        https://humans.ap.tesla.services/plan*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
-// @downloadURL
-// @updateURL
+// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/planner_filter/planner_filter.user.js
+// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/planner_filter/planner_filter.user.js
 // @grant        none
 // ==/UserScript==
 
