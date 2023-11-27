@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Planner Filter
-// @namespace    http://tampermonkey.net/
-// @version      1.5.1
-// @description  try to take over the world!
-// @author       You
+// @namespace    https://github.com/algineer/
+// @version      1.6.0
+// @description  Allow user to filter planner tasks
+// @author       Algineer
 // @match        https://humans.ap.tesla.services/plan*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/planner_filter/planner_filter.user.js
@@ -12,12 +12,14 @@
 // ==/UserScript==
 
 (function() {
-    function createChild(parent, type, innerHTML, classList) {
-        const element = document.createElement(type)
-        element.innerHTML = innerHTML
-        element.classList.add(...classList.split(' '));
+    function createElementWithProperties(tag, properties) {
+        const element = document.createElement(tag);
 
-        parent.append(element)
+        for (const [key, value] of Object.entries(properties)) {
+            element[key] = value;
+        }
+
+        return element;
     }
 
     function filter() {
@@ -56,10 +58,12 @@
         let parent = document.querySelector("#root > div > div.css-t32mmx > div.css-1ifbo89 > div.css-603q35 > div > div.css-jnut47") //need to update now and then
         if (parent) {
 
-            const filter_html = '<div class = "css-3oglug">Filter</div>' +
-                '<input id="filter" cursor="initial" rows="4" class="css-c352py" value="">'
-
-            createChild(parent, 'label', filter_html, 'css-1jjo2yn');
+            const element = createElementWithProperties('label', {
+                className: 'css-1jjo2yn',
+                innerHTML: '<div class = "css-3oglug">Filter</div>' +
+                    '<input id="filter" cursor="initial" rows="4" class="css-c352py" value="">'
+            })
+            parent.append(element)
 
             //change any parent styles
             parent.style.gridTemplateColumns = '308px 320px 180px'
