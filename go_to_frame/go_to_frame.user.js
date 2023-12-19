@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Go To Frame
 // @namespace    https://github.com/algineer/
-// @version      1.0.o
+// @version      1.0.0
 // @description  Lets users jump to last labeled frame or input frame number that is labeled
 // @author       You
 // @match        https://flide.ap.tesla.services/3d/TCLP*
