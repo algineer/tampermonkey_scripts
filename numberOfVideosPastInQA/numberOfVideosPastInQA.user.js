@@ -16,15 +16,14 @@ async function fetchData(url) {
 const fetchAllData = async(urls) => {
     try {
         const responses = await Promise.all(urls.map(url => fetchData(url)));
-        // responses is an array of the resolved data from all requests
-        // const convertedData = await convertTo2DArray(responses, 5)
+
         return responses
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-const convertTo2DArray = async(arr, chunkSize) => {
+const convertTo2DArray = (arr, chunkSize) => {
     const result = [];
     for (let i = 0; i < arr.length; i += chunkSize) {
         result.push(arr.slice(i, i + chunkSize));
@@ -65,22 +64,60 @@ const generateUrlArray = (ldapArray, dateArray) => {
     return urlArray;
 }
 
-// Dates
-let startDate = window.location.href.match(/\d+-\d+-\d+/g)[0]
-let dates = generateDateArray(startDate)
 
-//LDAPs
-let rowList = document.querySelectorAll('[role="row"]')
-rowList = Array.from(rowList).slice(1)
 
-let ldaps = generateLdapArray(rowList)
+function createElementWithProperties(tag, properties) {
+    const element = document.createElement(tag);
 
-//Urls
-let urls = generateUrlArray(ldaps, dates)
+    for (const [key, value] of Object.entries(properties)) {
+        element[key] = value;
+    }
 
-// Call the function to initiate the requests
-let data
-fetchAllData(urls)
-    .then(DATA => {
-        data = DATA
-    })
+    return element;
+}
+
+requestAnimationFrame(run);
+
+async function run() {
+    let parent = document.querySelector("#root > div > div.css-t32mmx > div.css-1ifbo89 > div.css-603q35 > div") //need to update now and then
+    if (parent) {
+        //style--------
+        const element = createElementWithProperties('button', {
+            className: 'css-93hyt',
+            innerText: 'Q',
+            backgroundColor: '#666666',
+            color: 'white'
+        })
+        parent.append(element)
+
+        //change any parent styles
+        parent.style.gridTemplateColumns = '100px 240px 160px 256px 160px 160px auto 1fr auto auto auto auto'
+
+
+        //Logic--------
+
+        // Dates
+        let startDate = window.location.href.match(/\d+-\d+-\d+/g)[0]
+        let dates = generateDateArray(startDate)
+
+        //LDAPs
+        let rowList = document.querySelectorAll('[role="row"]')
+        rowList = Array.from(rowList).slice(1)
+
+        let ldaps = generateLdapArray(rowList)
+
+        //Urls
+        let urls = generateUrlArray(ldaps, dates)
+
+        // Call the function to initiate the requests
+
+        const generateCSVData = () => {
+
+        }
+
+        let data = await fetchAllData(urls)
+        let d2 = convertTo2DArray(data, 5)
+
+    } else
+        requestAnimationFrame(run);
+}
