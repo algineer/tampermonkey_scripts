@@ -84,13 +84,21 @@
     }
 
     const createElementWithProperties = (tag, properties) => {
-        const element = document.createElement(tag)
+        const element = document.createElement(tag);
 
         for (const [key, value] of Object.entries(properties)) {
-            element[key] = value
+            if (key === 'style' && typeof value === 'object') {
+                // If the property is 'style' and the value is an object, apply styles recursively
+                for (const [styleKey, styleValue] of Object.entries(value)) {
+                    element.style[styleKey] = styleValue;
+                }
+            } else {
+                // For other properties, directly set the value
+                element[key] = value;
+            }
         }
 
-        return element
+        return element;
     }
 
     const generateCSVData = ({ dateArray, ldapArray, data2D }) => {
@@ -147,10 +155,13 @@
             const element = createElementWithProperties("button", {
                 className: "css-93hyt",
                 innerText: "Q",
-                backgroundColor: "#666666",
-                color: "white",
                 onclick: () => {
-                    run()
+                    run();
+                },
+                style: {
+                    backgroundColor: "#666666",
+                    color: "white",
+                    fontSize: "16px", // You can add more styles here
                 },
             })
             parent.append(element)
