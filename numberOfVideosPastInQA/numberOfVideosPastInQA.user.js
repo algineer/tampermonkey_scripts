@@ -20,9 +20,14 @@
     const fetchData = async(url) => {
         const response = await fetch(url)
         const data = await response.json()
-        if (JSON.stringify(data.stats) !== "{}")
-            return data.stats[getProject()].numberOfVideosPastInQA
-        else return 0
+        if (JSON.stringify(data.stats) !== "{}" && data.stats.hasOwnProperty(getProject())) {
+            let tempValue = data.stats[getProject()].numberOfVideosPastInQA
+            if (tempValue === null)
+                return 0
+            else
+                return tempValue
+        } else
+            return 0
     }
 
     // Use Promise.all to execute fetch requests concurrently
