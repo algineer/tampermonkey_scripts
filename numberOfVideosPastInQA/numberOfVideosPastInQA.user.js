@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Number Of Videos Past In QA
 // @namespace    https://github.com/algineer/
-// @version      1.1.1
+// @version      1.1.2
 // @description  Create a CSV to view Team QASO amount by day
 // @author       Algineer
 // @match        https://humans.ap.tesla.services/performance/labeling*
