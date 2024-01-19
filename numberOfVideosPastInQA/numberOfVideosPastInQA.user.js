@@ -161,7 +161,9 @@
                 style: {
                     backgroundColor: "#666666",
                     color: "white",
-                    fontSize: "16px", // You can add more styles here
+                    fontSize: "16px",
+                    border: 'none',
+                    borderRadius: '5px'
                 },
             })
             parent.append(element)
