@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Number Of Videos Past In QA
 // @namespace    https://github.com/algineer/
-// @version      1.1.2
+// @version      1.1.3
 // @description  Create a CSV to view Team QASO amount by day
 // @author       Algineer
 // @match        https://humans.ap.tesla.services/performance/labeling*
@@ -107,7 +107,10 @@
     }
 
     const generateCSVData = ({ dateArray, ldapArray, data2D }) => {
-        dateArray.unshift("Dates")
+        let dayAbbreviations = ['M', 'T', 'W', 'T', 'F'];
+        dateArray = dateArray.map((value, index) => dayAbbreviations[index] + value.slice(-2));
+
+        dateArray.unshift("Name")
         data2D.forEach((data1D, index) => {
             data1D.unshift(ldapArray[index])
         })
@@ -125,6 +128,10 @@
     }
 
     const run = async() => {
+
+        let numberOfVideosPastInQABtn = document.querySelector('#numberOfVideosPastInQABtn')
+        numberOfVideosPastInQABtn.style.backgroundColor = '#0b75b7'
+
         let startDate = window.location.href.match(/\d+-\d+-\d+/g)[0]
         let dates = generateDateArray(startDate)
 
@@ -149,6 +156,7 @@
                 data2D: d2,
             })
         )
+        numberOfVideosPastInQABtn.style.backgroundColor = '#666666'
     }
 
     const loopUntil = () => {
@@ -158,6 +166,7 @@
         if (parent) {
             //style--------
             const element = createElementWithProperties("button", {
+                id: "numberOfVideosPastInQABtn",
                 className: "css-93hyt",
                 innerText: "Q",
                 onclick: () => {
