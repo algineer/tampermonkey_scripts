@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bulk Resolve Escations
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Allow user to bulk ressolve escations
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/escalations*
