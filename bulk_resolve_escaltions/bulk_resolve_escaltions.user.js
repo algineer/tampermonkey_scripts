@@ -4,7 +4,7 @@
 // @version      1.0.0
 // @description  Allow user to bulk ressolve escations
 // @author       Algineer
-// @match        https://humans.ap.tesla.services/escalations*
+// @match        https://flide.ap.tesla.services/3d/escalations*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/bulk_resolve_escaltions/bulk_resolve_escaltions.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/bulk_resolve_escaltions/bulk_resolve_escaltions.user.js
