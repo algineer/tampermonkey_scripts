@@ -78,7 +78,7 @@
 
             const element = createElementWithProperties('label', {
                 className: 'css-1jjo2yn',
-                Children: [{
+                children: [{
                         tag: 'div',
                         className: 'css-3oglug',
                         innerHTML: 'Filter'
