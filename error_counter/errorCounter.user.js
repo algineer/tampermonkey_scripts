@@ -185,7 +185,7 @@ const totalNWCount = async() => {
         let parent = document.querySelector("#root > main > div.css-vivuko > div.css-q2jbf2 > div.react-draggable > div.css-yncms1 > div") //need to update now and then
         if (parent) {
             if (!hasRun) {
-                
+
                 const element = createElementWithProperties('div', {
                     className: 'css-1vft9uj',
                     style: {
@@ -267,3 +267,5 @@ const totalNWCount = async() => {
         requestAnimationFrame(run);
     }
 })();
+
+//↻
