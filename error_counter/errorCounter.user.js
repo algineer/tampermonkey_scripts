@@ -7,15 +7,11 @@ const getProject = () => {
 
 
 // Function to perform a single fetch request
-const fetchData = async(url) => {
-    const response = await fetch(url)
+const fetchData = async() => {
+    const response = await fetch(`/tesla.services/3d/api/${getId()}`)
     const data = await response.json()
     if (JSON.stringify(data.conments) !== "{}" && data.coments.hasOwnProperty(getProject())) {
-        let tempValue = data.stats[getProject()].numberOfVideosPastInQA
-        if (tempValue === null)
-            return 0
-        else
-            return tempValue
+        return data.coments.getProject()
     } else
         return 0
 }
@@ -24,26 +20,58 @@ const fetchData = async(url) => {
 const perFrameNWCount = async() => {
 
     const result = {};
+    const commentObjList = await fetchData()
 
-    fetchData().forEach(item => {
-        const { comment, data, disputed_reason } = item
-        const cameraFrameMatch = comment.match(/camera=([^&]+)&frame=(\d+)/);
-        if (cameraFrameMatch && disputed_reason === null) {
-            const [, camera, frame] = cameraFrameMatch;
-            const key = `Frame ${frame} "${camera}" camera`;
+    if (commentObjList){
+        commentObjList.forEach(commentObj => {
+            const { comment, data, disputed_reason } = commentObj
+            const cameraFrameMatch = comment.match(/camera=([^&]+)&frame=(\d+)/);
 
-            if (!result[key]) {
-                result[key] = { Mistake: 0, minorMistake: 0 };
+            if (cameraFrameMatch) {
+                const [, camera, frame] = cameraFrameMatch;
+                const key = `Frame ${frame} "${camera}" camera`;
+
+                if (!result[key]) {
+                    result[key] = { Mistake: 0, minorMistake: 0 };
+                }
+
+                if (data.subtype === 'minorMistake') {
+                    result[key].minorMistake++;
+                } else if (data.subtype === 'mistake') {
+                    result[key].Mistake++;
+                }
             }
+        });
+    }
+    console.log(result);
+}
 
-            if (data.subtype === 'minorMistake') {
-                result[key].minorMistake++;
-            } else if (data.subtype === 'mistake') {
-                result[key].Mistake++;
+const totalNWCount = async() => {
+
+    const result = {};
+    const commentObjList = await fetchData()
+
+    if (commentObjList){
+        commentObjList.forEach(commentObj => {
+            const { comment, data, disputed_reason } = commentObj
+            const cameraFrameMatch = comment.match(/camera=([^&]+)&frame=(\d+)/);
+
+            if (cameraFrameMatch) {
+                const [, camera, frame] = cameraFrameMatch;
+                const key = `Frame ${frame} "${camera}" camera`;
+
+                if (!result[key]) {
+                    result[key] = { Mistake: 0, minorMistake: 0 };
+                }
+
+                if (data.subtype === 'minorMistake') {
+                    result[key].minorMistake++;
+                } else if (data.subtype === 'mistake') {
+                    result[key].Mistake++;
+                }
             }
-        }
-    });
-
+        });
+    }
     console.log(result);
 }
 
@@ -157,8 +185,7 @@ const perFrameNWCount = async() => {
         let parent = document.querySelector("#root > main > div.css-vivuko > div.css-q2jbf2 > div.react-draggable > div.css-yncms1 > div") //need to update now and then
         if (parent) {
             if (!hasRun) {
-
-
+                
                 const element = createElementWithProperties('div', {
                     className: 'css-1vft9uj',
                     style: {
@@ -169,13 +196,31 @@ const perFrameNWCount = async() => {
                             className: 'css-vujjmw',
                             style: {
                                 marginLeft: '10px',
-                                gridTemplateColumns: 'auto auto auto'
+                                gridTemplateColumns: 'auto auto auto auto auto'
                             },
-
                             children: [{
-                                    tag: 'span',
-                                    className: 'css-14njx65',
-                                    innerHTML: 'Total Needs Work:'
+                                tag: 'button',
+                                id: 'showFrameBreakDown',
+                                className: 'css-14njx65',///////////////////
+                                style: {
+                                    transform: 'rotate(0deg)',
+                                    testAlign: 'center',
+                                    height: '20px',
+                                    width: '20px'
+                                },
+                                onclick: () => {
+                                    document.getElementById('frameBreakDown').style.display = document.getElementById('frameBreakDown').style.display == '' ? 'none' : ''
+                                    document.getElementById('showFrameBreakDown').style.transform = document.getElementById('frameBreakDown').style.transform == 'rotate(0deg)' ? 'rotate(90deg)' : 'rotate(0deg)'
+                                },
+                                innerHTML: '▶'
+                                },
+                                {
+                                    tag: 'select',
+                                    id: 'countBreakDown',
+                                    innerHTML: '<option value="total">Total</option>'+
+                                               '<option value="unresolved">Unresolved</option>'+
+                                               '<option value="pending">Pending</option>'+
+                                               '<option value="resolved">Resolved</option>'
                                 },
                                 {
                                     tag: 'span',
@@ -188,16 +233,20 @@ const perFrameNWCount = async() => {
                                     id: 'minorMistake',
                                     className: 'css-14njx65',
                                     innerHTML: 'minorMistake'
-                                }
+                                },
+                                {
+                                    tag: 'button',
+                                    className: 'css-14njx65',///////////////////
+                                    innerHTML: '|R|'
+                                },
                             ]
                         },
                         {
                             tag: 'div',
-                            id: 'frameBreakdown',
+                            id: 'frameBreakDown',
                             className: 'css-1vft9uj',
-                            innerHTML: 'fames',
                             style: {
-                                borderTop: 'thin solid red',
+                                borderTop: 'thin solid grey',
                                 display: 'none'
                             },
                         }
