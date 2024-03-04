@@ -1,80 +1,3 @@
-const getId = () => {
-    return window.location.href.match(/\w+-\d+-\d+-\d+-\d+-\d+-\d+-[^?]+/g)[0]
-}
-const getProject = () => {
-    return window.location.href.match(/task=\w+/g)[0].replace("task=", "")
-}
-
-
-// Function to perform a single fetch request
-const fetchData = async() => {
-    const response = await fetch(`/tesla.services/3d/api/${getId()}`)
-    const data = await response.json()
-    if (JSON.stringify(data.conments) !== "{}" && data.coments.hasOwnProperty(getProject())) {
-        return data.coments.getProject()
-    } else
-        return 0
-}
-
-
-const perFrameNWCount = async() => {
-
-    const result = {};
-    const commentObjList = await fetchData()
-
-    if (commentObjList){
-        commentObjList.forEach(commentObj => {
-            const { comment, data, disputed_reason } = commentObj
-            const cameraFrameMatch = comment.match(/camera=([^&]+)&frame=(\d+)/);
-
-            if (cameraFrameMatch) {
-                const [, camera, frame] = cameraFrameMatch;
-                const key = `Frame ${frame} "${camera}" camera`;
-
-                if (!result[key]) {
-                    result[key] = { Mistake: 0, minorMistake: 0 };
-                }
-
-                if (data.subtype === 'minorMistake') {
-                    result[key].minorMistake++;
-                } else if (data.subtype === 'mistake') {
-                    result[key].Mistake++;
-                }
-            }
-        });
-    }
-    console.log(result);
-}
-
-const totalNWCount = async() => {
-
-    const result = {};
-    const commentObjList = await fetchData()
-
-    if (commentObjList){
-        commentObjList.forEach(commentObj => {
-            const { comment, data, disputed_reason } = commentObj
-            const cameraFrameMatch = comment.match(/camera=([^&]+)&frame=(\d+)/);
-
-            if (cameraFrameMatch) {
-                const [, camera, frame] = cameraFrameMatch;
-                const key = `Frame ${frame} "${camera}" camera`;
-
-                if (!result[key]) {
-                    result[key] = { Mistake: 0, minorMistake: 0 };
-                }
-
-                if (data.subtype === 'minorMistake') {
-                    result[key].minorMistake++;
-                } else if (data.subtype === 'mistake') {
-                    result[key].Mistake++;
-                }
-            }
-        });
-    }
-    console.log(result);
-}
-
 // ==UserScript==
 // @name         Error Counter
 // @namespace    http://tampermonkey.net/
@@ -88,7 +11,105 @@ const totalNWCount = async() => {
 
 (function() {
 
+    const getId = () => {
+        return window.location.href.match(/\w+-\d+-\d+-\d+-\d+-\d+-\d+-[^?]+/g)[0]
+    }
+    const getProject = () => {
+        return window.location.href.match(/task=\w+/g)[0].replace("task=", "")
+    }
 
+
+    // Function to perform a single fetch request
+    const fetchData = async() => {
+        const response = await fetch(`/api/internal/3d/videos/${getId()}`)
+        const data = await response.json()
+        if (JSON.stringify(data.comments) !== "{}" && data.comments.hasOwnProperty(getProject())) {
+            return data.comments[getProject()]
+        } else
+            return 0
+    }
+
+
+    const perFrameNWCount = async() => {
+
+        const result = {};
+        const commentObjList = await fetchData()
+
+        const whatToCount = document.getElementById('countBreakDown').value
+
+        if (commentObjList) {
+            commentObjList.forEach(commentObj => {
+                const { comment, data, disputed_reason } = commentObj
+                const cameraFrameMatch = comment.match(/camera=([^&]+)&frame=(\d+)/);
+                const { issueStatus, subtype } = data
+
+                // Ignore all escalations
+                if (subtype !== 'escalation') {
+
+                    // Determine if this comment should be counted
+                    // let shouldCount = false
+
+                    // if (disputed_reason == null) // && ingnore disputed is checked
+                    //     shouldCount = false
+
+                    // if ((whatToCount.includes(issueStatus) || whatToCount == 'total') && (disputed_reason == null && )) // && select value is unresolved
+                    //     shouldCount = true
+                    // if (disputed_reason == null) // && ingnore disputed is checked
+                    //     shouldCount = false
+
+                    if (cameraFrameMatch && shouldCount) {
+                        const [, camera, frame] = cameraFrameMatch;
+                        const key = `Frame ${frame}, "${camera}" camera`;
+
+
+
+                        if (!result[key]) {
+                            result[key] = { Mistake: 0, minorMistake: 0 };
+                        }
+
+                        //issueStatus == 'pending' || 'unresolved' || 'resolved'
+
+
+                        if (subtype === 'minorMistake') {
+                            result[key].minorMistake++;
+                        } else if (subtype === 'mistake') {
+                            result[key].Mistake++;
+                        }
+                    }
+                }
+            });
+        }
+        console.log(result);
+    }
+
+    const totalNWCount = async() => {
+
+        const result = {};
+        const commentObjList = await fetchData()
+
+        if (commentObjList) {
+            commentObjList.forEach(commentObj => {
+                const { comment, data, disputed_reason } = commentObj
+                const cameraFrameMatch = comment.match(/camera=([^&]+)&frame=(\d+)/);
+
+                if (cameraFrameMatch) {
+                    const [, camera, frame] = cameraFrameMatch;
+                    const key = `Frame ${frame}, "${camera}" camera`;
+
+                    if (!result[key]) {
+                        result[key] = { Mistake: 0, minorMistake: 0 };
+                    }
+
+                    if (data.subtype === 'minorMistake') {
+                        result[key].minorMistake++;
+                    } else if (data.subtype === 'mistake') {
+                        result[key].Mistake++;
+                    }
+                }
+            });
+        }
+        console.log(result);
+    }
 
     function create(parent) {
         const commentBoxHTML = '<div class="css-1vft9uj" style="border-top: thin solid red;">' +
@@ -148,8 +169,6 @@ const totalNWCount = async() => {
 
     };
 
-
-
     const createElementWithProperties = (tag, properties) => {
         const element = document.createElement(tag);
 
@@ -195,32 +214,44 @@ const totalNWCount = async() => {
                             tag: 'div',
                             className: 'css-vujjmw',
                             style: {
-                                marginLeft: '10px',
-                                gridTemplateColumns: 'auto auto auto auto auto'
+                                //marginLeft: '10px',
+                                gridTemplateColumns: '20px 200px 100px 150px 150px auto'
                             },
                             children: [{
-                                tag: 'button',
-                                id: 'showFrameBreakDown',
-                                className: 'css-14njx65',///////////////////
-                                style: {
-                                    transform: 'rotate(0deg)',
-                                    testAlign: 'center',
-                                    height: '20px',
-                                    width: '20px'
-                                },
-                                onclick: () => {
-                                    document.getElementById('frameBreakDown').style.display = document.getElementById('frameBreakDown').style.display == '' ? 'none' : ''
-                                    document.getElementById('showFrameBreakDown').style.transform = document.getElementById('frameBreakDown').style.transform == 'rotate(0deg)' ? 'rotate(90deg)' : 'rotate(0deg)'
-                                },
-                                innerHTML: '▶'
+                                    tag: 'button',
+                                    id: 'showFrameBreakDownBtn',
+                                    className: 'css-19unbmf',
+                                    style: {
+                                        transform: 'rotate(0deg)',
+                                        testAlign: 'center',
+                                        //height: '',
+                                        width: '18.5px',
+                                        backgroundColor: 'white',
+                                        color: 'grey',
+                                        border: 'none'
+                                    },
+                                    onclick: () => {
+                                        document.getElementById('frameBreakDown').style.display = document.getElementById('frameBreakDown').style.display == '' ? 'none' : ''
+                                        document.getElementById('showFrameBreakDownBtn').style.transform = document.getElementById('showFrameBreakDownBtn').style.transform == 'rotate(0deg)' ? 'rotate(90deg)' : 'rotate(0deg)'
+
+                                        parent.parentElement.style.height = document.getElementById('showFrameBreakDownBtn').style.transform == 'rotate(0deg)' ? '100%' : '810px'
+                                    },
+                                    innerHTML: '▶'
                                 },
                                 {
                                     tag: 'select',
                                     id: 'countBreakDown',
-                                    innerHTML: '<option value="total">Total</option>'+
-                                               '<option value="unresolved">Unresolved</option>'+
-                                               '<option value="pending">Pending</option>'+
-                                               '<option value="resolved">Resolved</option>'
+                                    style: {
+                                        height: '18.5px',
+                                    },
+                                    innerHTML: '<option value="total">Total</option>' +
+                                        '<option value="unresolved">Unresolved</option>' +
+                                        '<option value="pending">Pending</option>' +
+                                        '<option value="resolved">Resolved</option>'
+                                },
+                                {
+                                    tag: 'input',
+                                    className: 'css-14njx65',
                                 },
                                 {
                                     tag: 'span',
@@ -236,8 +267,19 @@ const totalNWCount = async() => {
                                 },
                                 {
                                     tag: 'button',
-                                    className: 'css-14njx65',///////////////////
-                                    innerHTML: '|R|'
+                                    id: 'refreshBtn',
+                                    className: 'css-19unbmf',
+                                    style: {
+                                        transform: 'rotate(0deg)',
+                                        testAlign: 'center',
+                                        //height: '',
+                                        width: '18.5px',
+                                        backgroundColor: 'white',
+                                        color: 'grey',
+                                        border: 'none'
+                                    },
+                                    onclick: () => {},
+                                    innerHTML: '↻'
                                 },
                             ]
                         },
@@ -247,7 +289,8 @@ const totalNWCount = async() => {
                             className: 'css-1vft9uj',
                             style: {
                                 borderTop: 'thin solid grey',
-                                display: 'none'
+                                display: 'none',
+                                height: '50px'
                             },
                         }
                     ]
@@ -267,5 +310,3 @@ const totalNWCount = async() => {
         requestAnimationFrame(run);
     }
 })();
-
-//↻
