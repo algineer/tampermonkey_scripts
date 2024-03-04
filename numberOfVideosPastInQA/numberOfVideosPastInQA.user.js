@@ -160,7 +160,7 @@
     }
 
     const loopUntil = () => {
-        let parent = ocument.querySelector("#root > div > div.css-1lyloya > div.css-1ifbo89 > div.css-603q35 > div") //need to update now and then
+        let parent = document.querySelector("#root > div > div.css-1lyloya > div.css-1ifbo89 > div.css-603q35 > div") //need to update now and then
         if (parent) {
             //style--------
             const element = createElementWithProperties("button", {
