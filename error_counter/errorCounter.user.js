@@ -197,6 +197,14 @@
         return element;
     }
 
+    const changeBackground = (elementId) => {
+        let el = document.getElementById(elementId)
+        if (el.style.backgroundColor == 'white')
+            el.style.backgroundColor = '#ffdbdb'
+        else
+            el.style.backgroundColor = 'white'
+    }
+
     let hasRun = false
     requestAnimationFrame(run)
 
@@ -219,7 +227,7 @@
                             },
                             children: [{
                                     tag: 'button',
-                                    id: 'showFrameBreakDownBtn',
+                                    id: 'frameBreakDownBtn',
                                     className: 'css-19unbmf',
                                     style: {
                                         transform: 'rotate(0deg)',
@@ -232,10 +240,13 @@
                                     },
                                     onclick: () => {
                                         document.getElementById('frameBreakDown').style.display = document.getElementById('frameBreakDown').style.display == '' ? 'none' : ''
-                                        document.getElementById('showFrameBreakDownBtn').style.transform = document.getElementById('showFrameBreakDownBtn').style.transform == 'rotate(0deg)' ? 'rotate(90deg)' : 'rotate(0deg)'
+                                        document.getElementById('frameBreakDownBtn').style.transform = document.getElementById('frameBreakDownBtn').style.transform == 'rotate(0deg)' ? 'rotate(90deg)' : 'rotate(0deg)'
 
-                                        parent.parentElement.style.height = document.getElementById('showFrameBreakDownBtn').style.transform == 'rotate(0deg)' ? '100%' : '810px'
+                                        parent.parentElement.style.height = document.getElementById('frameBreakDownBtn').style.transform == 'rotate(0deg)' ? '100%' : '810px'
                                     },
+                                    title: 'Per Frame Breakdown',
+                                    onmouseenter: () => { changeBackground("frameBreakDownBtn") },
+                                    onmouseleave: () => { changeBackground("frameBreakDownBtn") },
                                     innerHTML: '▶'
                                 },
                                 {
@@ -250,8 +261,15 @@
                                         '<option value="resolved">Resolved</option>'
                                 },
                                 {
-                                    tag: 'input',
-                                    className: 'css-14njx65',
+                                    tag: 'div',
+                                    className: 'css-1xi4blx',
+                                    children: [{
+                                        tag: 'input',
+                                        type: 'checkbox',
+                                        id: 'ignoreDisputed',
+                                        className: 'css-1xi4blx',
+                                        title: 'Ignore Disputed',
+                                    }]
                                 },
                                 {
                                     tag: 'span',
@@ -279,6 +297,9 @@
                                         border: 'none'
                                     },
                                     onclick: () => {},
+                                    title: 'Refresh',
+                                    onmouseenter: () => { changeBackground("refreshBtn") },
+                                    onmouseleave: () => { changeBackground("refreshBtn") },
                                     innerHTML: '↻'
                                 },
                             ]
