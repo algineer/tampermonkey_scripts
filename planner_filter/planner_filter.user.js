@@ -73,7 +73,7 @@
     requestAnimationFrame(run);
 
     function run() {
-        let parent = document.querySelector("#root > div > div.css-t32mmx > div.css-1ifbo89 > div.css-603q35 > div > div.css-jnut47") //need to update now and then
+        let parent = document.querySelector("div.css-jnut47") //need to update now and then
         if (parent) {
 
             const element = createElementWithProperties('label', {
