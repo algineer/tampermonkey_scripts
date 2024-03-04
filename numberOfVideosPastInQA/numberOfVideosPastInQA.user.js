@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Number Of Videos Past In QA
 // @namespace    https://github.com/algineer/
-// @version      1.1.3
+// @version      1.1.4
 // @description  Create a CSV to view Team QASO amount by day
 // @author       Algineer
 // @match        https://humans.ap.tesla.services/performance/labeling*
@@ -160,9 +160,7 @@
     }
 
     const loopUntil = () => {
-        let parent = document.querySelector(
-                "#root > div > div.css-t32mmx > div.css-1ifbo89 > div.css-603q35 > div"
-            ) //need to update now and then
+        let parent = ocument.querySelector("#root > div > div.css-1lyloya > div.css-1ifbo89 > div.css-603q35 > div") //need to update now and then
         if (parent) {
             //style--------
             const element = createElementWithProperties("button", {
