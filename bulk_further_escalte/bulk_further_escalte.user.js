@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Bulk Further Escalate
 // @namespace    https://github.com/algineer/
-// @version      1.1.0
+// @version      1.1.1
 // @description  Allow user to bulk further escalate escations
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/escalations*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
-// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/bulk_resolve_escaltions/bulk_further_escalte.user.js
-// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/bulk_resolve_escaltions/bulk_further_escalte.user.js
+// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/bulk_further_escalte/bulk_further_escalte.user.js
+// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/bulk_further_escalte/bulk_further_escalte.user.js
 // @grant        none
 // ==/UserScript==
 
