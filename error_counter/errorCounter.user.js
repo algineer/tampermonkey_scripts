@@ -35,7 +35,7 @@
         const result = {};
         const commentObjList = await fetchData()
 
-        const whatToCount = document.getElementById('countBreakDown').value
+        //const whatToCount = document.getElementById('countBreakDown').value
 
         if (commentObjList) {
             commentObjList.forEach(commentObj => {
@@ -57,7 +57,8 @@
                     // if (disputed_reason == null) // && ingnore disputed is checked
                     //     shouldCount = false
 
-                    if (cameraFrameMatch && shouldCount) {
+                    //if (cameraFrameMatch && shouldCount) {
+                    if (cameraFrameMatch) {
                         const [, camera, frame] = cameraFrameMatch;
                         const key = `Frame ${frame}, "${camera}" camera`;
 
@@ -223,7 +224,7 @@
                             className: 'css-vujjmw',
                             style: {
                                 //marginLeft: '10px',
-                                gridTemplateColumns: '20px 200px 100px 150px 150px auto'
+                                gridTemplateColumns: '20px repeat(2, 175px) repeat(2, 1fr) auto'
                             },
                             children: [{
                                     tag: 'button',
@@ -258,17 +259,31 @@
                                     innerHTML: '<option value="total">Total</option>' +
                                         '<option value="unresolved">Unresolved</option>' +
                                         '<option value="pending">Pending</option>' +
+                                        '<option value="unresolved&pending">Unresolved & Pending</option>' +
                                         '<option value="resolved">Resolved</option>'
                                 },
                                 {
                                     tag: 'div',
                                     className: 'css-1xi4blx',
                                     children: [{
-                                        tag: 'input',
-                                        type: 'checkbox',
-                                        id: 'ignoreDisputed',
-                                        className: 'css-1xi4blx',
-                                        title: 'Ignore Disputed',
+                                        tag: 'label',
+                                        className: 'css-1c5ckqt',
+                                        cursor: 'pointer',
+                                        children: [{
+                                                tag: 'input',
+                                                type: 'checkbox',
+                                                id: 'ignoreDisputed',
+                                                className: 'css-1xi4blx',
+                                            },
+                                            {
+                                                tag: 'div',
+                                                className: 'css-14njx65',
+                                                innerHTML: 'Ignore Disputed',
+                                                style: {
+                                                    fontSize: '10px'
+                                                }
+                                            }
+                                        ]
                                     }]
                                 },
                                 {
@@ -307,7 +322,7 @@
                         {
                             tag: 'div',
                             id: 'frameBreakDown',
-                            className: 'css-1vft9uj',
+                            className: 'css-vujjmw',
                             style: {
                                 borderTop: 'thin solid grey',
                                 display: 'none',
