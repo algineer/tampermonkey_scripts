@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bulk Further Escalate
 // @namespace    https://github.com/algineer/
-// @version      1.1.1
+// @version      1.1.2
 // @description  Allow user to bulk further escalate escations
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/escalations*
