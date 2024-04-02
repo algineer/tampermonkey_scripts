@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bulk Resolve Escations
 // @namespace    https://github.com/algineer/
-// @version      1.1.1
+// @version      1.1.3
 // @description  Allow user to bulk ressolve escations
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/escalations*
@@ -61,16 +61,16 @@
         if (parent) {
 
             const element = createElementWithProperties('label', {
-                className: 'css-1jjo2yn',
+                className: 'css-1sr1772',
                 children: [{
                         tag: 'div',
-                        className: 'css-3oglug',
+                        className: 'css-1xhs0h5',
                         innerHTML: 'Bulk Resolve'
                     },
                     {
                         tag: 'button',
                         id: 'bulkResolveBtn',
-                        className: 'css-c352py',
+                        className: 'css-1vlq6kh',
                         title: 'Window will reload after completion',
                         innerText: 'Click to Resolve',
                         onclick: () => {
