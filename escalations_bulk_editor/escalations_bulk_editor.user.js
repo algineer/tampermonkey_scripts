@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Escalations Bulk Editor
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
+// @version      1.0.5
 // @description  Allow user to bulk edit escations (resolve/further escalte)
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/escalations*
@@ -42,19 +42,18 @@
 
     function bulkEdit() {
         let bulkEditOption = document.getElementById('bulkEditOption').value
-        if(bulkEditOption !== 'selectOption'){
+        if (bulkEditOption !== 'selectOption') {
             let btnList = document.querySelectorAll('button')
             let bulkEditBtnList = Array.from(btnList).filter(btn => btn.textContent === bulkEditOption);
-    
+
             bulkEditBtnList.forEach(b => {
                 b.click()
             })
-    
+
             setTimeout(window.location.reload(), 5000)
-        }
-        else
+        } else
             alert('Bulk Edit Option Needs to be Selected')
-        
+
     };
 
 
@@ -73,33 +72,42 @@
                         innerHTML: 'Bulk Edit Escalations'
                     },
                     {
-                        tag: 'select',
-                        id: 'bulkEditOption',
-                        className: 'css-1vlq6kh',
-                        style: {
-                            height: '18.5px',
-                        },
-                        innerHTML:  '<option value="selectOption">Select Option</option>' +
+                        tag: 'div',
+                        className: ' css-1b72rnb-control',
+                        children: [{
+                                tag: 'select',
+                                id: 'bulkEditOption',
+                                className: 'css-1vlq6kh',
+                                style: {
+                                    height: '30px',
+                                },
+                                innerHTML: '<option value="selectOption">Select Option</option>' +
                                     '<option value="Resolve">Resolve</option>' +
                                     '<option value="Further Escalate">Further Escalate</option>'
-                            
-                    },
-                    {
-                        tag: 'button',
-                        id: 'bulkBtn',
-                        className: 'css-1vlq6kh',
-                        title: 'Window will reload after completion',
-                        innerText: '->',
-                        onclick: () => {
-                            bulkEdit()
-                        }
+
+                            },
+                            {
+                                tag: 'button',
+                                id: 'bulkBtn',
+                                className: 'css-1vlq6kh',
+                                style: {
+                                    height: '30px',
+                                },
+                                title: 'Window will reload after completion',
+                                innerText: '->',
+                                onclick: () => {
+                                    bulkEdit()
+                                }
+                            }
+                        ]
+
                     }
                 ]
             });
             parent.append(element)
 
             //change any parent styles
-            parent.style.gridTemplateColumns = '500px 500px 140px'
+            parent.style.gridTemplateColumns = '500px 500px 153px'
 
         } else
             requestAnimationFrame(run);
