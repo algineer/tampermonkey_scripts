@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Planner Filter
 // @namespace    https://github.com/algineer/
-// @version      1.7.3
+// @version      1.7.4
 // @description  Allow user to filter planner tasks
 // @author       Algineer
 // @match        https://humans.ap.tesla.services/plan*
@@ -41,7 +41,9 @@
     }
 
     function filter() {
-        let divList = document.querySelectorAll("div.css-c9z190")
+        let divList = Array.from(document.querySelectorAll('[role="row"]'))
+        divList.shift()
+
         let filterInput = document.getElementById("filter");
 
         if (divList) {
