@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Planner Filter
 // @namespace    https://github.com/algineer/
-// @version      1.7.2
+// @version      1.7.3
 // @description  Allow user to filter planner tasks
 // @author       Algineer
 // @match        https://humans.ap.tesla.services/plan*
@@ -73,20 +73,20 @@
     requestAnimationFrame(run);
 
     function run() {
-        let parent = document.querySelector("div.css-jnut47") //need to update now and then
+        let parent = document.querySelector("div.css-199fc11") //need to update now and then
         if (parent) {
 
             const element = createElementWithProperties('label', {
-                className: 'css-1jjo2yn',
+                className: 'css-1sr1772',
                 children: [{
                         tag: 'div',
-                        className: 'css-3oglug',
+                        className: 'css-1xhs0h5',
                         innerHTML: 'Filter'
                     },
                     {
                         tag: 'input',
                         id: 'filter',
-                        className: 'css-c352py',
+                        className: 'css-1oauwpt',
                         value: ''
                     }
                 ]
