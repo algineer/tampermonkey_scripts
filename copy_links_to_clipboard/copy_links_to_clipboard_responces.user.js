@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy Links to clipboard: Responces
 // @namespace    https://github.com/algineer/
-// @version      1.2.1
+// @version      1.2.2
 // @description  Load x number of links into clipboard
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/responses*
@@ -45,7 +45,7 @@
 
     setTimeout(() => {
         copy.bind(null, amount)()
-    }, 2500);
+    }, 1000);
 
 
 })();
