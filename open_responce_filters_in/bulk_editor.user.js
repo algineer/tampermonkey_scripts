@@ -6,8 +6,8 @@
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/responses*
 // @grant        none
-// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/open_responces_in/bulk_editor.user.js
-// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/open_responces_in/bulk_editor.user.js
+// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/open_responce_filters_in/bulk_editor.user.js
+// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/open_responce_filters_in/bulk_editor.user.js
 // @run-at       context-menu
 // ==/UserScript==
 
