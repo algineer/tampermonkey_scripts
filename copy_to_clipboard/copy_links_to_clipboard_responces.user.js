@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy Links to clipboard: Responces
 // @namespace    https://github.com/algineer/
-// @version      1.3.1
+// @version      1.3.2
 // @description  Load x number of links into clipboard
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/responses*
@@ -43,7 +43,7 @@
     }
 
 
-    let amount = window.prompt("Aount of clips to copy")
+    let amount = window.prompt("Amount of links to copy")
 
     if (amount != null) {
         document.getElementsByTagName("body")[0].style.cursor = 'wait'

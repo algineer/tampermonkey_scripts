@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Copy ID's to clipboard: Responces
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
-// @description  Load x number of clip ID's into clipboard
+// @version      1.0.1
+// @description  Load x number of clip IDs into clipboard
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/responses*
 // @grant        none
@@ -43,7 +43,7 @@
     }
 
 
-    let amount = window.prompt("Aount of clips to copy")
+    let amount = window.prompt("Amount of Ids to copy")
 
     if (amount != null) {
         document.getElementsByTagName("body")[0].style.cursor = 'wait'
