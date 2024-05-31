@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy Links to clipboard: Responces
 // @namespace    https://github.com/algineer/
-// @version      1.2.2
+// @version      1.3.0
 // @description  Load x number of links into clipboard
 // @author       Algineer
 // @match        https://flide.ap.tesla.services/3d/responses*
@@ -34,18 +34,23 @@
             clip_id_list.push(clip_url.href)
         })
 
-        await copyToClipboard(clip_id_list.slice(0, count))
+        if (count != '')
+            await copyToClipboard(clip_id_list.slice(0, count))
+        else
+            await copyToClipboard(clip_id_list)
 
         document.getElementsByTagName("body")[0].style.cursor = ''
     }
 
 
     let amount = window.prompt("Aount of clips to copy")
-    document.getElementsByTagName("body")[0].style.cursor = 'wait'
 
-    setTimeout(() => {
-        copy.bind(null, amount)()
-    }, 1000);
+    if (amount != null) {
+        document.getElementsByTagName("body")[0].style.cursor = 'wait'
 
+        setTimeout(() => {
+            copy.bind(null, amount)()
+        }, 1000);
+    }
 
 })();
