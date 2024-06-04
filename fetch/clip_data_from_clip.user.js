@@ -6,7 +6,7 @@
 // @author       Algineer
 // @match        https://*/3d/MESH*
 // @match        https://*/3d/TCLP*
-// @match        https://*/3d/FLIDE*
+// @match        https://*/3d/FLDE*
 // @grant        none
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/clip_data_from_clip.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/clip_data_from_clip.user.js
