@@ -4,9 +4,9 @@
 // @version      1.0.0
 // @description  Console.log() clip data 
 // @author       Algineer
-// @match        https://flide.ap.tesla.services/3d/MESH*
-// @match        https://flide.ap.tesla.services/3d/TCLP*
-// @match        https://flide.ap.tesla.services/3d/FLIDE*
+// @match        https://*/MESH*
+// @match        https://*/TCLP*
+// @match        https://*/FLIDE*
 // @grant        none
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/clip_data_from_clip.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/clip_data_from_clip.user.js
