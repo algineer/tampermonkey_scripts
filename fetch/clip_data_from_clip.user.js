@@ -4,9 +4,9 @@
 // @version      1.0.0
 // @description  Console.log() clip data 
 // @author       Algineer
-// @match        https://*/MESH*
-// @match        https://*/TCLP*
-// @match        https://*/FLIDE*
+// @match        https://*/3d/MESH*
+// @match        https://*/3d/TCLP*
+// @match        https://*/3d/FLIDE*
 // @grant        none
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/clip_data_from_clip.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/clip_data_from_clip.user.js
