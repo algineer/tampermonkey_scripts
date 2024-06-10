@@ -75,20 +75,24 @@
     requestAnimationFrame(run);
 
     function run() {
-        let parent = document.querySelector("div.css-199fc11") //need to update now and then
+        let parent = document.querySelector("[role='table']").parentElement.parentElement.firstChild.firstChild.lastChild
+        let label_class = parent.lastChild.classList.value
+        let div_class = parent.lastChild.firstChild.classList.value
+        let input_class = parent.lastChild.lastChild.lastChild.lastChild.classList.value
+            // let parent = document.querySelector("div.css-199fc11") //need to update now and then
         if (parent) {
 
             const element = createElementWithProperties('label', {
-                className: 'css-1sr1772',
+                className: label_class,
                 children: [{
                         tag: 'div',
-                        className: 'css-1xhs0h5',
+                        className: div_class,
                         innerHTML: 'Filter'
                     },
                     {
                         tag: 'input',
                         id: 'filter',
-                        className: 'css-1oauwpt',
+                        className: input_class,
                         value: ''
                     }
                 ]
