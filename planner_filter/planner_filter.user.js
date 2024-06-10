@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Planner Filter
 // @namespace    https://github.com/algineer/
-// @version      1.8.0
+// @version      1.8.1
 // @description  Allow user to filter planner tasks
 // @author       Algineer
 // @match        https://humans.ap.tesla.services/plan*
@@ -75,36 +75,39 @@
     requestAnimationFrame(run);
 
     function run() {
-        let parent = document.querySelector("[role='table']").parentElement.parentElement.firstChild.firstChild.lastChild
-        let label_class = parent.lastChild.classList.value
-        let div_class = parent.lastChild.firstChild.classList.value
-        let input_class = parent.lastChild.lastChild.lastChild.lastChild.classList.value
-            // let parent = document.querySelector("div.css-199fc11") //need to update now and then
-        if (parent) {
+        let starting_element = document.querySelector("[role='table']")
+        if (starting_element) {
+            let parent = starting_element.parentElement.parentElement.firstChild.firstChild.lastChild
+            let label_class = parent.lastChild.classList.value
+            let div_class = parent.lastChild.firstChild.classList.value
+            let input_class = parent.lastChild.lastChild.lastChild.lastChild.classList.value
+                // let parent = document.querySelector("div.css-199fc11") //need to update now and then
+            if (parent) {
 
-            const element = createElementWithProperties('label', {
-                className: label_class,
-                children: [{
-                        tag: 'div',
-                        className: div_class,
-                        innerHTML: 'Filter'
-                    },
-                    {
-                        tag: 'input',
-                        id: 'filter',
-                        className: input_class,
-                        value: ''
-                    }
-                ]
-            })
-            parent.append(element)
+                const element = createElementWithProperties('label', {
+                    className: label_class,
+                    children: [{
+                            tag: 'div',
+                            className: div_class,
+                            innerHTML: 'Filter'
+                        },
+                        {
+                            tag: 'input',
+                            id: 'filter',
+                            className: input_class,
+                            value: ''
+                        }
+                    ]
+                })
+                parent.append(element)
 
-            //change any parent styles
-            parent.style.gridTemplateColumns = '308px 320px 180px'
+                //change any parent styles
+                parent.style.gridTemplateColumns = '308px 320px 180px'
 
-            updateListener()
-
+                updateListener()
+            }
         } else
             requestAnimationFrame(run);
+
     }
 })();
