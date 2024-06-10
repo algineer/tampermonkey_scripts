@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Planner Filter
 // @namespace    https://github.com/algineer/
-// @version      1.7.4
+// @version      1.8.0
 // @description  Allow user to filter planner tasks
 // @author       Algineer
 // @match        https://humans.ap.tesla.services/plan*
