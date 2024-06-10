@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Open Neighbor
 // @namespace    https://github.com/algineer/
-// @version      1.1.1
+// @version      1.1.2
 // @description  Open Neighbor Geohash 
 // @author       Algineer
 // @match        https://*/3d/MESH*
@@ -112,6 +112,7 @@
     const open = (id, geohash) => {
         id.push(geohash)
         window.open(window.location.href.replace(/[a-zA-Z]+-\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d-......../g, id.join("-")), "_blank")
+        id.pop()
     }
 
     // Start
