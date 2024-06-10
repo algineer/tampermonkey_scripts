@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Open Neighbor
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
+// @version      1.1.0
 // @description  Open Neighbor Geohash 
 // @author       Algineer
 // @match        https://*/3d/MESH*
@@ -109,23 +109,31 @@
         return encodeGeoHash(newLatLon[0], newLatLon[1], geohash.length).toLocaleUpperCase();
     };
 
-    let geohash = window.location.href.match(/[0-9B-Z]{1,12}(?=\?)/gi)[0]
+    const open = (id, geohash) => {
+        id.push(geohash)
+        window.open(window.location.href.replace(/[a-zA-Z]+-\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d-......../g, id.join("-")), "_blank")
+    }
+
+    // Start
+    let id = window.location.href.match(/[a-zA-Z]+-\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d-......../g)[0].split("-")
+    let geohash = id.pop()
 
     const menu_command_north = GM_registerMenuCommand("North", function(event) {
         const neighborGeohash = nextGeohash(3, 'north', geohash);
-        window.open(window.location.href.replace(/[0-9B-Z]{1,12}(?=\?)/gi, neighborGeohash), "_blank")
+        open(id, geohash)
+
     });
     const menu_command_east = GM_registerMenuCommand("East", function(event) {
         const neighborGeohash = nextGeohash(3, 'east', geohash);
-        window.open(window.location.href.replace(/[0-9B-Z]{1,12}(?=\?)/gi, neighborGeohash), "_blank")
+        open(id, geohash)
     });
     const menu_command_west = GM_registerMenuCommand("West", function(event) {
         const neighborGeohash = nextGeohash(3, 'west', geohash);
-        window.open(window.location.href.replace(/[0-9B-Z]{1,12}(?=\?)/gi, neighborGeohash), "_blank")
+        open(id, geohash)
     });
     const menu_command_south = GM_registerMenuCommand("South", function(event) {
         const neighborGeohash = nextGeohash(3, 'south', geohash);
-        window.open(window.location.href.replace(/[0-9B-Z]{1,12}(?=\?)/gi, neighborGeohash), "_blank")
+        open(id, geohash)
     });
 
 })();
