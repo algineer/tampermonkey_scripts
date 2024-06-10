@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Open Neighbor
 // @namespace    https://github.com/algineer/
-// @version      1.1.0
+// @version      1.1.1
 // @description  Open Neighbor Geohash 
 // @author       Algineer
 // @match        https://*/3d/MESH*
@@ -120,20 +120,20 @@
 
     const menu_command_north = GM_registerMenuCommand("North", function(event) {
         const neighborGeohash = nextGeohash(3, 'north', geohash);
-        open(id, geohash)
+        open(id, neighborGeohash)
 
     });
     const menu_command_east = GM_registerMenuCommand("East", function(event) {
         const neighborGeohash = nextGeohash(3, 'east', geohash);
-        open(id, geohash)
+        open(id, neighborGeohash)
     });
     const menu_command_west = GM_registerMenuCommand("West", function(event) {
         const neighborGeohash = nextGeohash(3, 'west', geohash);
-        open(id, geohash)
+        open(id, neighborGeohash)
     });
     const menu_command_south = GM_registerMenuCommand("South", function(event) {
         const neighborGeohash = nextGeohash(3, 'south', geohash);
-        open(id, geohash)
+        open(id, neighborGeohash)
     });
 
 })();
