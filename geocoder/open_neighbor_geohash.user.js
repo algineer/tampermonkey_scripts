@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name         Open Neighbor
 // @namespace    https://github.com/algineer/
-// @version      1.1.2
+// @version      1.1.3
 // @description  Open Neighbor Geohash 
 // @author       Algineer
 // @match        https://*/3d/MESH*
-// @match        https://*/3d/TCLP*
-// @match        https://*/3d/FLDE*
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/geocoder/open_neighbor_geohash.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/geocoder/open_neighbor_geohash.user.js
 // @grant        GM_registerMenuCommand
@@ -110,14 +108,14 @@
     };
 
     const open = (id, geohash) => {
-        id.push(geohash)
+        id.push(geohash + 'S')
         window.open(window.location.href.replace(/[a-zA-Z]+-\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d-......../g, id.join("-")), "_blank")
         id.pop()
     }
 
     // Start
     let id = window.location.href.match(/[a-zA-Z]+-\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d-......../g)[0].split("-")
-    let geohash = id.pop()
+    let geohash = id.pop().slice(0, -1)
 
     const menu_command_north = GM_registerMenuCommand("North", function(event) {
         const neighborGeohash = nextGeohash(3, 'north', geohash);
