@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FQA Comments
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
+// @version      1.0.2
 // @description  Download CSV with FQA Comments
 // @author       Algineer
 // @match        https://*/3d/responses*
