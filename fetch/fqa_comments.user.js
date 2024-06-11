@@ -6,8 +6,8 @@
 // @author       Algineer
 // @match        https://*/3d/responses*
 // @grant        none
-// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/fqa_comments.user
-// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/fqa_comments.user
+// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/fqa_comments.user.js
+// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/fqa_comments.user.js
 // @run-at       context-menu
 // ==/UserScript==
 
