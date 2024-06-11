@@ -114,7 +114,7 @@
         data.unshift(dataHeaders)
         data = arrayToCsv(data)
 
-        downloadCSV(data)
+        downloadCSV(data, `${getProject()}_FQA_comments.csv`)
             // console.table(data)
     }
 
