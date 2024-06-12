@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Copy ID's to clipboard: Responces
 // @namespace    https://github.com/algineer/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Load x number of clip IDs into clipboard
 // @author       Algineer
-// @match        https://flide.ap.tesla.services/3d/responses*
+// @match        https://*/3d/responses*
 // @grant        none
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/copy_to_clipboard/copy_ids_to_clipboard_responces.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/copy_to_clipboard/copy_ids_to_clipboard_responces.user.js

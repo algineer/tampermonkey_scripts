@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Bulk Resolve Escations
 // @namespace    https://github.com/algineer/
-// @version      1.1.3
+// @version      1.1.4
 // @description  Allow user to bulk ressolve escations
 // @author       Algineer
-// @match        https://flide.ap.tesla.services/3d/escalations*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
+// @match        https://*/3d/escalations*
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/bulk_resolve_escaltions/bulk_resolve_escaltions.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/bulk_resolve_escaltions/bulk_resolve_escaltions.user.js
 // @grant        none

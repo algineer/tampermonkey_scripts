@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Go To Frame
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Lets users jump to last labeled frame or input frame number that is labeled
 // @author       You
-// @match        https://flide.ap.tesla.services/3d/TCLP*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
+// @match        https://*/3d/TCLP*
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/go_to_frame/go_to_frame.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/go_to_frame/go_to_frame.user.js
 // @grant        none

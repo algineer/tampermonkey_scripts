@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Annotation Cycle
 // @namespace    https://github.com/algineer/
-// @version      1.1.2
+// @version      1.1.3
 // @description  try to take over the world!
 // @author       Algineer
-// @match        https://flide.ap.tesla.services/3d/TCLP*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
+// @match        https://*/3d/TCLP*
 // @grant        none
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/annotation_cycle/annotation_cycle.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/annotation_cycle/annotation_cycle.user.js

@@ -4,7 +4,7 @@
 // @version      1.3.2
 // @description  Load x number of links into clipboard
 // @author       Algineer
-// @match        https://flide.ap.tesla.services/3d/responses*
+// @match        https://*/3d/responses*
 // @grant        none
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/copy_to_clipboard/copy_links_to_clipboard_responces.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/copy_to_clipboard/copy_links_to_clipboard_responces.user.js

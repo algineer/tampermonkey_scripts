@@ -4,8 +4,7 @@
 // @version      1.0
 // @description  try to take over the world!
 // @author       You
-// @match        https://flide.ap.tesla.services/3d/TCLP*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
+// @match        https://*/3d/TCLP*
 // @grant        none
 // ==/UserScript==
 

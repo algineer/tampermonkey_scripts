@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Planner Filter
 // @namespace    https://github.com/algineer/
-// @version      1.8.1
+// @version      1.8.2
 // @description  Allow user to filter planner tasks
 // @author       Algineer
-// @match        https://humans.ap.tesla.services/plan*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
+// @match        https://*/plan*
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/planner_filter/planner_filter.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/planner_filter/planner_filter.user.js
 // @grant        none
