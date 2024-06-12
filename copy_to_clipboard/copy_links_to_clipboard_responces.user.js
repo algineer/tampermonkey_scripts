@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy Links to clipboard: Responces
 // @namespace    https://github.com/algineer/
-// @version      1.3.2
+// @version      1.3.3
 // @description  Load x number of links into clipboard
 // @author       Algineer
 // @match        https://*/3d/responses*
