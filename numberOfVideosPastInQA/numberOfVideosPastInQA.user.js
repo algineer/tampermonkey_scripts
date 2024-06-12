@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Number Of Videos Past In QA
 // @namespace    https://github.com/algineer/
-// @version      1.1.5
+// @version      1.1.6
 // @description  Create a CSV to view Team QASO amount by day
 // @author       Algineer
-// @match        https://humans.ap.tesla.services/performance/labeling*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tesla.services
+// @match        https://*/performance/labeling*
 // @grant        none
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/numberOfVideosPastInQA/numberOfVideosPastInQA.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/numberOfVideosPastInQA/numberOfVideosPastInQA.user.js
@@ -81,7 +80,7 @@
         ldapArray.forEach((ldap) => {
             dateArray.forEach((date) => {
                 urlArray.push(
-                    `https://humans.ap.tesla.services/api/internal/performance/${ldap}/${date}?`
+                    `/api/internal/performance/${ldap}/${date}?`
                 )
             })
         })
