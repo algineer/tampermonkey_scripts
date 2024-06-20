@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Clip Data
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Console.log() clip data 
 // @author       Algineer
 // @match        https://*/3d/MESH*
@@ -31,7 +31,9 @@
 
         let data = await fetchData(id)
 
-        console.log(data)
+        window.data = data
+
+        console.log(window.data)
     }
 
     run()
