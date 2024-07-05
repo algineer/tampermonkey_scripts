@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Clip Data
 // @namespace    https://github.com/algineer/
-// @version      1.1.1
+// @version      1.1.2
 // @description  Console.log() clip data 
 // @author       Algineer
 // @match        https://*/3d/MESH*
@@ -34,7 +34,7 @@
 
         if (domain == 'flide')
             data = await fetchData('/api/internal/3d/videos/', id)
-        else if (domain == 'tclip')
+        else if (domain == 'tclips')
             data = await fetchData('/api/internal/v1/clips/', id)
 
         window.data = data
