@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Clip Data
 // @namespace    https://github.com/algineer/
-// @version      1.1.0
+// @version      1.1.1
 // @description  Console.log() clip data 
 // @author       Algineer
 // @match        https://*/3d/MESH*
@@ -29,7 +29,7 @@
     //process the fetched data
     const run = async() => {
         let domain = window.location.href.match(/(?<=\/\/)(.*?)(?=\.)/)[0]
-        let id = window.location.href.match(/[a-zA-Z]+(?:-\d+){6}-[[:alnum:]]+/g)[0]
+        let id = window.location.href.match(/[a-zA-Z]+(?:-\d+){6}-\w+/g)[0]
         let data
 
         if (domain == 'flide')
