@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TPV From Responces
 // @namespace    https://github.com/algineer/
-// @version      1.3.0
+// @version      1.4.0
 // @description  Download CSV with Clip TPV from Responces
 // @author       Algineer
 // @match        https://*/3d/responses*
@@ -13,7 +13,7 @@
 
 (function() {
     // Function to perform a single fetch request
-    var count = 0
+    var count = 1
     const getProject = () => {
         let project = document.querySelector("div.css-4c761y").textContent
         project = project.split(" ")
@@ -49,7 +49,8 @@
             labeling_tpv = ""
         }
 
-        if (labeling_ldap != "" && labeling_ldap != undefined)
+        console.log(labeling_tpv)
+        if (labeling_tpv != "" && labeling_tpv != undefined)
             return [id, labeling_ldap, `=TIME(${labeling_tpv.getUTCHours()}, ${labeling_tpv.getUTCMinutes()}, ${labeling_tpv.getUTCSeconds()})`]
         return [id, labeling_ldap, '=TIME(0,0,0)']
 
