@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TPV From Responces
 // @namespace    https://github.com/algineer/
-// @version      1.0.1
+// @version      1.2.0
 // @description  Download CSV with Clip TPV from Responces
 // @author       Algineer
 // @match        https://*/3d/responses*
@@ -48,7 +48,7 @@
             labeling_tpv = ""
         }
 
-        if (labeling_ldap != "")
+        if (labeling_ldap != "" || labeling_ldap != null)
             return [id, labeling_ldap, `=TIME(${labeling_tpv.getUTCHours()}, ${labeling_tpv.getUTCMinutes()}, ${labeling_tpv.getUTCSeconds()})`]
         return [id, labeling_ldap, '=TIME(0,0,0)']
 
