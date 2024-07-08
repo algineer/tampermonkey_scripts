@@ -109,7 +109,7 @@
             clip_id_list.push(clip_url.href.match(/[a-zA-Z]+-\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d-......../g)[0])
         })
 
-        let data = await fetchAllData(clip_id_list[0])
+        let data = await fetchAllData(clip_id_list)
 
         data.unshift(dataHeaders)
         data = arrayToCsv(data)
