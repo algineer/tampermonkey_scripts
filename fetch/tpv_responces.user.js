@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TPV From Responces
 // @namespace    https://github.com/algineer/
-// @version      1.4.1
+// @version      1.4.2
 // @description  Download CSV with Clip TPV from Responces
 // @author       Algineer
 // @match        https://*/3d/responses*
@@ -46,10 +46,10 @@
             labeling_tpv = data.labelling_duration_ms[getProject()]
             labeling_tpv = new Date(labeling_tpv)
         } catch {
-            labeling_tpv = ""
+            labeling_tpv = "Invalid Date"
         }
 
-        if (labeling_tpv != "" && labeling_tpv != undefined)
+        if (labeling_tpv != undefined && labeling_tpv != "Invalid Date")
             return [id, labeling_ldap, `=TIME(${labeling_tpv.getUTCHours()}, ${labeling_tpv.getUTCMinutes()}, ${labeling_tpv.getUTCSeconds()})`]
         return [id, labeling_ldap, '=TIME(0,0,0)']
 
