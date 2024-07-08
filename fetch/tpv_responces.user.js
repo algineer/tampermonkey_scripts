@@ -13,6 +13,7 @@
 
 (function() {
     // Function to perform a single fetch request
+    var count = 0
     const getProject = () => {
         let project = document.querySelector("div.css-4c761y").textContent
         project = project.split(" ")
@@ -26,7 +27,7 @@
         const response = await fetch(`/api/internal/3d/videos/${id}`)
         const data = await response.json()
 
-        console.log(id)
+        console.log(count++, id)
 
         let latest_project_statuses = data.latest_project_statuses[getProject()]
 
