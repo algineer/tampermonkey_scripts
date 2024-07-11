@@ -2,7 +2,7 @@
 // @name         MxN Geohash Matix
 // @namespace    https://github.com/algineer/
 // @version      1.0.0
-// @description  Gnerate MxN Geohash Matix
+// @description  Generate MxN Geohash Matix
 // @author       Algineer
 // @match        https://*/*
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/geocoder/geohash_MxN_matix.user.js
