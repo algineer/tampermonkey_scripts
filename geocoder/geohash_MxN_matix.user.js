@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         MxN Geohash Matix
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Generate MxN Geohash Matix
 // @author       Algineer
 // @match        https://*/*
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/geocoder/geohash_MxN_matix.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/geocoder/geohash_MxN_matix.user.js
-// @grant        GM_registerMenuCommand
+// @grant        context-menu
 // ==/UserScript==
 
 
