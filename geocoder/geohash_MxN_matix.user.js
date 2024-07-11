@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MxN Geohash Matix
 // @namespace    https://github.com/algineer/
-// @version      1.0.1
+// @version      1.1.0
 // @description  Generate MxN Geohash Matix
 // @author       Algineer
 // @match        https://*/*
