@@ -7,7 +7,7 @@
 // @match        https://*/*
 // @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/geocoder/geohash_MxN_matix.user.js
 // @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/geocoder/geohash_MxN_matix.user.js
-// @grant        context-menu
+// @run-at       context-menu
 // ==/UserScript==
 
 
