@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Escalations Bulk Editor
 // @namespace    https://github.com/algineer/
-// @version      1.1.0
+// @version      1.2.0
 // @description  Allow user to bulk edit escations (resolve/further escalte)
 // @author       Algineer
 // @match        https://*/3d/escalations*
@@ -69,8 +69,8 @@
             let label_class = parent.lastChild.classList.value
             let div_class = parent.lastChild.firstChild.classList.value
             let input_class = parent.lastChild.lastChild.lastChild.lastChild.classList.value
-            let setlect_btn = parent.lastChild.firstChild.lastChild.classList.value
-                // let parent = document.querySelector("div.css-199fc11") //need to update now and then
+            let setlect_btn_class = starting_element.parentElement.parentElement.firstChild.firstChild.firstChild.childNodes[2].lastChild.classList.value
+
             if (parent) {
 
                 const element = createElementWithProperties('label', {
@@ -83,10 +83,13 @@
                         {
                             tag: 'div',
                             className: input_class,
+                            style: {
+                                justifyContent: "space-between"
+                            },
                             children: [{
                                     tag: 'select',
                                     id: 'bulkEditOption',
-                                    className: setlect_btn,
+                                    className: setlect_btn_class,
                                     style: {
                                         height: '30px',
                                     },
@@ -98,7 +101,7 @@
                                 {
                                     tag: 'button',
                                     id: 'bulkBtn',
-                                    className: setlect_btn,
+                                    className: setlect_btn_class,
                                     style: {
                                         height: '30px',
                                     },
@@ -116,7 +119,7 @@
                 parent.append(element)
 
                 //change any parent styles
-                parent.style.gridTemplateColumns = '500px 500px 175px'
+                parent.style.gridTemplateColumns = '500px 500px 131px'
             }
         } else
             requestAnimationFrame(run);
