@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Number Of Videos Past In QA
 // @namespace    https://github.com/algineer/
-// @version      1.1.6
+// @version      1.2.0
 // @description  Create a CSV to view Team QASO amount by day
 // @author       Algineer
 // @match        https://*/performance/labeling*
@@ -19,14 +19,12 @@
     const fetchData = async(url) => {
         const response = await fetch(url)
         const data = await response.json()
-        if (JSON.stringify(data.stats) !== "{}" && data.stats.hasOwnProperty(getProject())) {
-            let tempValue = data.stats[getProject()].numberOfVideosPastInQA
-            if (tempValue === null)
-                return 0
-            else
-                return tempValue
-        } else
-            return 0
+        let numberOfVideosPastInQA
+        try {
+            return data.stats[getProject()].numberOfVideosPastInQA != null ? [data.stats[getProject()].numberOfVideosPastInQA] : [0]
+        } catch {
+            return [0]
+        }
     }
 
     // Use Promise.all to execute fetch requests concurrently
