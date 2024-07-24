@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TPV From Responces
 // @namespace    https://github.com/algineer/
-// @version      1.4.2
+// @version      1.5.0
 // @description  Download CSV with Clip TPV from Responces
 // @author       Algineer
 // @match        https://*/3d/responses*
@@ -56,17 +56,34 @@
     }
 
     // Use Promise.all to execute fetch requests concurrently
-    const fetchAllData = async(urls) => {
+    // const fetchAllData = async(urls) => {
+    //     try {
+    //         let responses = []
+    //             // const responses = await Promise.all(urls.map((id) => fetchData(id)))
+    //         for (let id of urls) {
+    //             responses.push(await fetchData(id))
+    //         }
+
+    //         return responses
+    //     } catch (error) {
+    //         console.error("Error:", error)
+    //     }
+    // }
+
+    const fetchAllDataInBatches = async(ids, batchSize = 5) => {
         try {
-            let responses = []
-                // const responses = await Promise.all(urls.map((id) => fetchData(id)))
-            for (let id of urls) {
-                responses.push(await fetchData(id))
+            let responses = [];
+            for (let i = 0; i < ids.length; i += batchSize) {
+                const batchIds = ids.slice(i, i + batchSize);
+                const promises = batchIds.map(id => fetchData(id));
+                const batchResponses = await Promise.all(promises);
+                responses = responses.concat(batchResponses);
             }
 
-            return responses
+            return responses;
         } catch (error) {
-            console.error("Error:", error)
+            console.error("Error fetching all data:", error);
+            return [];
         }
     }
 
@@ -110,7 +127,7 @@
             clip_id_list.push(clip_url.href.match(/[a-zA-Z]+-\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d-......../g)[0])
         })
 
-        let data = await fetchAllData(clip_id_list)
+        let data = await fetchAllDataInBatches(clip_id_list, 50)
 
         data.unshift(dataHeaders)
         data = arrayToCsv(data)
