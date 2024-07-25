@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy formated clip link
 // @namespace    https://github.com/algineer/
-// @version      1.0.0
+// @version      1.1.0
 // @description  Format Clip Link with ID
 // @author       Algineer
 // @match        https://*/3d/MESH*
@@ -9,8 +9,8 @@
 // @match        https://*/3d/FLDE*
 // @match        https://*/viz/tclip*
 // @grant        none
-// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/copy_formated_clip_link_to_clipboard.user.js
-// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/fetch/copy_formated_clip_link_to_clipboard.user.js
+// @downloadURL  https://github.com/algineer/tampermonkey_scripts/raw/main/copy_to_clipboard/copy_formated_clip_link_to_clipboard.user.js
+// @updateURL    https://github.com/algineer/tampermonkey_scripts/raw/main/copy_to_clipboard/copy_formated_clip_link_to_clipboard.user.js
 // @run-at       context-menu
 // ==/UserScript==
 
